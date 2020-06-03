@@ -12,7 +12,7 @@ script:
     - go test -v ./...
     - CGO_ENABLED=0 go build -o demo
     - echo "$REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
-    - docker build -f Dockerfile -t markusseiberl/demo:latest
+    - docker build -f Dockerfile -t markusseiberl/demo:latest ./
     - GIT_SHA="$(git rev-parse --short HEAD)"
     - docker tag markusseiberl/demo:latest markusseiberl/demo:$GIT_SHA
     - docker push markusseiberl/demo:latest
